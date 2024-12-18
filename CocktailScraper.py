@@ -34,5 +34,5 @@ def find_cocktails(driver): #Find and store all cocktail recipes on page
     options.headless = False  # don't trust the user to not mess with the slides
     driver = webdriver.Firefox()
 
-    if True:
+    if True: #Just here for now, might be useful if multiple services need to be scraped from.
         driver.get("https://www.diffordsguide.com/cocktails/search?s=1&isrc=browse&ificm=1&ifipp=1&g%5Bdg%5D=1&a=35&na=1&cal=425&gid=all")
