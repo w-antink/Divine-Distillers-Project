@@ -4,7 +4,7 @@ import selenium # type: ignore
 import re #Necessary for the conv_names function
 import time
 import json
-from selenium import webdriver  
+from selenium import webdriver   # pip install selenium
 from selenium.webdriver.firefox.options import Options
 from webdriver_manager.firefox import GeckoDriverManager
 from selenium.webdriver.common.by import By
@@ -20,6 +20,7 @@ def find_cocktails(driver): #Find and store all cocktail recipes on page
 
         if recipe_elements:
             for i, recipe_element in enumerate(recipe_elements):
+                print(f"Recipe {i+1} of {len(recipe_elements)}")
                 pass #Finish
     except:
         pass #Finish
@@ -30,9 +31,12 @@ def find_cocktails(driver): #Find and store all cocktail recipes on page
 #SCRAPER OPERATION
 
 #Initialize webdriver
-    options = Options()
-    options.headless = False  # don't trust the user to not mess with the slides
-    driver = webdriver.Firefox()
+options = Options()
+options.headless = False  # don't trust the user to not mess with the slides
+driver = webdriver.Firefox()
 
-    if True: #Just here for now, might be useful if multiple services need to be scraped from.
-        driver.get("https://www.diffordsguide.com/cocktails/search?s=1&isrc=browse&ificm=1&ifipp=1&g%5Bdg%5D=1&a=35&na=1&cal=425&gid=all")
+if True: #Just here for now, might be useful if multiple services need to be scraped from.
+    driver.get("https://www.diffordsguide.com/cocktails/search?s=1&isrc=browse&ificm=1&ifipp=1&g%5Bdg%5D=1&a=35&na=1&cal=425&gid=all")
+
+#Find and store all cocktail recipes on page
+find_cocktails(driver)
