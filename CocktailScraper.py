@@ -40,3 +40,7 @@ if True: #Just here for now, might be useful if multiple services need to be scr
 
 #Find and store all cocktail recipes on page
 find_cocktails(driver)
+
+#Close webdriver
+driver.quit()
+
