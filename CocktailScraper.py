@@ -19,6 +19,7 @@ def get_wait_time(quick=True):
     else:
         return random.uniform(30, 60)
 
+
 # ======================================================================
 # SCRAPER OPERATION
 
@@ -33,8 +34,8 @@ def run_scrape():
 
             results = soup.find(id="content-container")
             print(results.prettify())
-        pass
-
+            time.sleep(get_wait_time())
+            quit(42) # temporary
     except:
         print(f"Scraped {page_num} pages.")
 
