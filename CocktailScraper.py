@@ -1,17 +1,29 @@
-#Import necessary packages=============================================
-import psycopg2 # type: ignore
-import re #Necessary for the conv_names function
+# p
+# Import necessary packages=============================================
+import random
+
+import psycopg2  # type: ignore
+import re  # Necessary for the conv_names function
 import time
 import json
 import requests
 from bs4 import BeautifulSoup
-#======================================================================
 
-#======================================================================
-#SCRAPER OPERATION
+
+# ======================================================================
+# Tools
+
+def get_wait_time(quick=True):
+    if quick:
+        return random.uniform(19, 31)
+    else:
+        return random.uniform(30, 60)
+
+# ======================================================================
+# SCRAPER OPERATION
 
 def run_scrape():
-    try: #Iterate through each page of recipes and scrape recipe elements
+    try:  # Iterate through each page of recipes and scrape recipe elements
         page_num = 0
         while True:
             page_num += 1
@@ -27,4 +39,8 @@ def run_scrape():
         print(f"Scraped {page_num} pages.")
 
 
-#======================================================================
+# ======================================================================
+# MAIN FUNCTION
+
+if __name__ == "__main__":
+    run_scrape()
