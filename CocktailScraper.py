@@ -1,46 +1,30 @@
 #Import necessary packages=============================================
 import psycopg2 # type: ignore
-import selenium # type: ignore
 import re #Necessary for the conv_names function
 import time
 import json
-from selenium import webdriver   # pip install selenium
-from selenium.webdriver.firefox.options import Options
-from webdriver_manager.firefox import GeckoDriverManager
-from selenium.webdriver.common.by import By
-#======================================================================
-
-#======================================================================
-#SCRAPER SUB-FUNCTIONS
-
-def find_cocktails(driver): #Find and store all cocktail recipes on page
-    try:
-        #Locate all cocktail recipe elements
-        recipe_elements = driver.find_elements(By.CLASS_NAME, 'cell small-6 medium-3 large-2')
-
-        if recipe_elements:
-            for i, recipe_element in enumerate(recipe_elements):
-                print(f"Recipe {i+1} of {len(recipe_elements)}")
-                pass #Finish
-    except:
-        pass #Finish
-
+import requests
+from bs4 import BeautifulSoup
 #======================================================================
 
 #======================================================================
 #SCRAPER OPERATION
 
-#Initialize webdriver
-options = Options()
-options.headless = False  # don't trust the user to not mess with the slides
-driver = webdriver.Firefox()
+def run_scrape():
+    try: #Iterate through each page of recipes and scrape recipe elements
+        page_num = 0
+        while True:
+            page_num += 1
+            url = f"https://www.diffordsguide.com/cocktails/search?s=1&isrc=browse&ificm=1&ifipp=1&g%5Bdg%5D=1&gid=all&na=1&p={page_num}"
+            page = requests.get(url)
+            soup = BeautifulSoup(page.content, "html.parser")
 
-if True: #Just here for now, might be useful if multiple services need to be scraped from.
-    driver.get("https://www.diffordsguide.com/cocktails/search?s=1&isrc=browse&ificm=1&ifipp=1&g%5Bdg%5D=1&a=35&na=1&cal=425&gid=all")
+            results = soup.find(id="content-container")
+            print(results.prettify())
+        pass
 
-#Find and store all cocktail recipes on page
-find_cocktails(driver)
+    except:
+        print(f"Scraped {page_num} pages.")
 
-#Close webdriver
-driver.quit()
 
+#======================================================================
