@@ -15,7 +15,7 @@ from bs4 import BeautifulSoup
 
 def get_wait_time(quick=True):
     if quick:
-        return random.uniform(19, 31)
+        return random.uniform(17, 31)
     else:
         return random.uniform(30, 60)
 
@@ -28,7 +28,7 @@ def run_scrape():
         while True:
             page_num += 1
             url = f"https://www.diffordsguide.com/cocktails/search?s=1&isrc=browse&ificm=1&ifipp=1&g%5Bdg%5D=1&gid=all&na=1&p={page_num}"
-            page = requests.get(url)
+            page = requests.get(url, headers={"User-Agent": "Mozilla/5.0"})
             soup = BeautifulSoup(page.content, "html.parser")
 
             results = soup.find(id="content-container")
