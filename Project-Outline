@@ -1,14 +1,13 @@
 
 TENTATIVE PROJECT GOAL:
 -Scrape cocktail recipes from external sources for cross-referencing with DD products.
--Retain and organize recipe data for customer querying/filtering based on products.
+-Retain and organize recipe data for customer querying/filtering based on products (?)
 -Recommend DD products based on cocktail recipe preferences.
 
 TENTATIVE PROJECT STRUCTURE:
 -Python scraper to retrieve cocktail names, recipe, and ingredients.
--Data cleaning layer to generalize liquors/ingredients as needed.
--Database (or maybe just generic data structure) to retain cocktail data.
--Database (or maybe just generic data structure) to retain DD product data.
--Some way to link associated products to their recipe counterparts.
--Dashboard for Jason (?)
--Web component for online customers.
+-Cleaning functions to generalize liquors/ingredients as needed.
+-Data structure to retain cocktail data.
+-Data structure to retain DD product data.
+-Dashboard for Jason (?) --Shiny App(?)
+-Web component for online customers (?)
