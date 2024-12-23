@@ -2,7 +2,6 @@
 # Import necessary packages=============================================
 import random
 import psycopg2  # type: ignore
-import re  # Necessary for the conv_names function
 import time
 import json
 import requests
