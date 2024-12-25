@@ -1,4 +1,4 @@
-# p
+
 # Import necessary packages=============================================
 import random
 import psycopg2  # type: ignore
